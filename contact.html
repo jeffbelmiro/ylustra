@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 
 <head>
   <!-- Basic -->
@@ -7,12 +7,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <!-- Mobile Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Site Metas -->
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
+  <!-- SEO Meta Tags -->
+  <meta name="keywords" content="serviços de limpeza, empresa de limpeza, Porto, limpeza residencial, limpeza comercial, reparação, conservação, BravoClean, limpeza Madeira" />
+  <meta name="description" content="BravoClean é especialista em serviços de limpeza e manutenção no Porto e Madeira. Garantimos excelência, qualidade e satisfação em prédios e residências." />
+  <meta name="author" content="BravoClean" />
 
-  <title>BravoClean</title>
+  <!-- Open Graph Meta -->
+  <meta property="og:title" content="BravoClean - Serviços de Limpeza e Conservação no Porto e Madeira" />
+  <meta property="og:description" content="Serviços de limpeza e manutenção de alta qualidade para residências e empresas no Porto e Madeira. Contate-nos para soluções personalizadas!" />
+  <meta property="og:image" content="images/slider-img.png" />
+  <meta property="og:url" content="https://bravoclean.pt/" />
+  <meta property="og:type" content="website" />
+
+  <title>BravoClean - Limpeza no Porto e Madeira</title>
 
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
@@ -20,12 +27,34 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
   <!-- font awesome style -->
   <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
-
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
 
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "BravoClean",
+    "description": "Serviços de limpeza, reparação e conservação no Porto e Madeira. Garantimos excelência em cada projeto.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua do Amparo, nº 12, 3º Dt Traseiras",
+      "addressLocality": "Porto",
+      "addressRegion": "PT",
+      "postalCode": "4350-031",
+      "addressCountry": "Portugal"
+    },
+    "telephone": "+351925811039",
+    "email": "empresadelimpeza@gmail.com",
+    "url": "https://bravoclean.pt",
+    "logo": "images/slider-img.png",
+    "image": "images/about-img.jpg",
+    "areaServed": "Porto"
+  }
+  </script>
 </head>
 
 <body>
@@ -87,36 +116,38 @@
   </div>
 
 
-  <!-- contact section -->
-
-  <section class="contact_section layout_padding">
+  <!-- Form Section -->
+  <section id="contact-form" class="form-section">
     <div class="container">
-      <div class="heading_container">
-        <h2>
-          Entre em Contacto Conosco!
-        </h2>
+      <div class="heading_container heading_center">
+        <h2>Fale Conosco</h2>
       </div>
       <div class="row">
-        <div class="col-md-6">
-          <form action="">
-            <div>
-              <input type="text" placeholder="Nome" />
+        <div class="col-md-8 mx-auto">
+          <form action="send_email.php" method="POST">
+            <div class="form-group">
+              <label for="name">Nome</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Seu nome" required>
             </div>
-            <div>
-              <input type="tel" placeholder="Telefone" />
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Seu email" required>
             </div>
-            <div>
-              <input type="email" placeholder="Email" />
+            <div class="form-group">
+              <label for="phone">Telefone</label>
+              <input type="tel" class="form-control" id="phone" name="phone" placeholder="Seu telefone" required>
             </div>
-            <div>
-              <input type="text" class="message-box" placeholder="Mensagem" />
+            <div class="form-group">
+              <label for="message">Mensagem</label>
+              <textarea class="form-control" id="message" name="message" rows="5" placeholder="Sua mensagem" required></textarea>
             </div>
-            <div class="d-flex ">
-              <button>
-                Enviar
-              </button>
-            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
           </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Form Section -->
         </div>
         <div class="col-md-6">
           <div class="map_container">
@@ -208,16 +239,16 @@
 
   <!-- end info_section -->
 
-  <!-- footer section -->
-  <footer class="footer_section">
-    <div class="container">
-      <p>
-        &copy; <span id="displayDateYear"></span> All Rights Reserved By
-        <a href="https://html.design/">Free Html Templates</a>
-      </p>
-    </div>
-  </footer>
-  <!-- footer section -->
+ <!-- Footer -->
+ <footer class="footer_section">
+  <div class="container">
+    <p>
+      &copy; <span id="displayDateYear"></span> BravoClean. Todos os direitos reservados.
+    </p>
+  </div>
+</footer>
+<!-- End Footer -->
+
 
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.js"></script>
