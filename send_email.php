@@ -18,18 +18,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com'; // Servidor SMTP do Gmail
         $mail->SMTPAuth = true;
-        $mail->Username = 'empresadelimpeza78@gmail.com'; // Seu endereço Gmail
-        $mail->Password = 'Yudelin1978#'; // Sua senha do Gmail ou App Password
+        $mail->Username = 'jeffbelmiro@gmail.com'; // Seu endereço Gmail
+        $mail->Password = 'oozqoklacpawzfmg'; // Sua senha do Gmail ou App Password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Criptografia SSL
         $mail->Port = 465;
 
         // Remetente e destinatário
         $mail->setFrom('empresadelimpeza78@gmail.com', 'BravoClean'); // Seu email e nome
-        $mail->addAddress('empresadelimpeza78@gmail.com','jeffbelmiro@gmail.com'); // Email do destinatário
+        $mail->addAddress('empresadelimpeza78@gmail.com'); // Email do destinatário
 
         // Conteúdo do email
         $mail->isHTML(true);
-        $mail->Subject = 'Novo contato do site - ' $name ;
+        $mail->Subject = 'Novo contato do site BravoClean';
         $mail->Body = "
             <h2>Novo Contato Recebido</h2>
             <p><strong>Nome:</strong> $name</p>
@@ -45,5 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } catch (Exception $e) {
         echo "Erro ao enviar a mensagem: {$mail->ErrorInfo}";
     }
+    $mail->SMTPDebug = 2; // Exibe detalhes sobre o envio no console
+    $mail->Debugoutput = 'html'; // Formata a saída como HTML
 }
 ?>
