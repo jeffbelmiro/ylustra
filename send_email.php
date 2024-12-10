@@ -19,13 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Host = 'smtp.gmail.com'; // Servidor SMTP do Gmail
         $mail->SMTPAuth = true;
         $mail->Username = 'empresadelimpeza78@gmail.com'; // Seu endereço Gmail
-        $mail->Password = 'sua_senha'; // Sua senha do Gmail ou App Password
+        $mail->Password = 'Yudelin1978#'; // Sua senha do Gmail ou App Password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Criptografia SSL
         $mail->Port = 465;
 
         // Remetente e destinatário
         $mail->setFrom('empresadelimpeza78@gmail.com', 'BravoClean'); // Seu email e nome
-        $mail->addAddress('empresadelimpeza78@gmail.com'); // Email do destinatário
+        $mail->addAddress('empresadelimpeza78@gmail.com','jeffbelmiro@gmail.com'); // Email do destinatário
 
         // Conteúdo do email
         $mail->isHTML(true);
