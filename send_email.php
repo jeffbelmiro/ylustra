@@ -1,9 +1,8 @@
 <?php
-// Inclui o autoload do Composer
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/autoload.php'; // Verifique o caminho do autoload
+require 'vendor/autoload.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = htmlspecialchars($_POST['name']);
@@ -11,25 +10,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = htmlspecialchars($_POST['phone']);
     $message = htmlspecialchars($_POST['message']);
 
-    // Configurações do servidor SMTP
     $mail = new PHPMailer(true);
+
     try {
-        // Configuração do servidor
+        // Configurações SMTP
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com'; // Servidor SMTP do Gmail
+        $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'jeffbelmiro@gmail.com'; // Seu endereço Gmail
-        $mail->Password = 'oozqoklacpawzfmg'; // Sua senha do Gmail ou App Password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Criptografia SSL
+        $mail->Username = 'jeffbelmiro@gmail.com'; // Gmail
+        $mail->Password = 'oozqoklacpawzfmg'; // Senha ou App Password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port = 465;
 
         // Remetente e destinatário
-        $mail->setFrom('empresadelimpeza78@gmail.com', 'BravoClean'); // Seu email e nome
-        $mail->addAddress('empresadelimpeza78@gmail.com'); // Email do destinatário
+        $mail->setFrom('empresadelimpeza78@gmail.com', 'BravoClean');
+        $mail->addAddress('empresadelimpeza78@gmail.com');
 
         // Conteúdo do email
         $mail->isHTML(true);
-        $mail->Subject = 'Novo contato do site BravoClean';
+        $mail->Subject = 'Novo contato de cliente do site BravoClean';
         $mail->Body = "
             <h2>Novo Contato Recebido</h2>
             <p><strong>Nome:</strong> $name</p>
@@ -39,13 +38,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p>$message</p>
         ";
 
-        // Enviar email
         $mail->send();
-        echo "Mensagem enviada com sucesso!";
+        echo json_encode(["status" => "success", "message" => "Mensagem enviada com sucesso!"]);
     } catch (Exception $e) {
-        echo "Erro ao enviar a mensagem: {$mail->ErrorInfo}";
+        echo json_encode(["status" => "error", "message" => "Erro ao enviar a mensagem: {$mail->ErrorInfo}"]);
     }
-    $mail->SMTPDebug = 2; // Exibe detalhes sobre o envio no console
-    $mail->Debugoutput = 'html'; // Formata a saída como HTML
 }
 ?>

@@ -475,7 +475,7 @@
     <div class="row">
       <!-- Form Column -->
       <div class="col-md-6">
-        <form action="send_email.php" method="POST">
+        <form id="contact-form" method="POST">
           <div class="form-group">
             <label for="name">Nome</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Seu nome" required>
@@ -561,7 +561,7 @@
       </div>
     </div>
 
-    
+
   </div>
 </section>
 <!-- End Info Section -->
@@ -583,9 +583,62 @@
   <!-- Google Map -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
   <!-- End Google Map -->
+   <!--Script para exibir mensagem de status de envio da mensagem-->
+
+<script>
+  document.getElementById("contact-form").addEventListener("submit", async function (event) {
+    event.preventDefault(); // Evita o recarregamento da página
+
+    const form = event.target;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("send_email.php", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (result.status === "success") {
+        showPopup("Sucesso", result.message, "success");
+      } else {
+        showPopup("Erro", result.message, "error");
+      }
+    } catch (error) {
+      showPopup("Erro", "Ocorreu um erro ao enviar a mensagem.", "error");
+    }
+  });
+
+  function showPopup(title, message, type) {
+    const popup = document.createElement("div");
+    popup.style.position = "fixed";
+    popup.style.top = "50%";
+    popup.style.left = "50%";
+    popup.style.transform = "translate(-50%, -50%)";
+    popup.style.backgroundColor = type === "success" ? "#d4edda" : "#f8d7da";
+    popup.style.border = `1px solid ${type === "success" ? "#c3e6cb" : "#f5c6cb"}`;
+    popup.style.color = type === "success" ? "#155724" : "#721c24";
+    popup.style.padding = "20px";
+    popup.style.borderRadius = "5px";
+    popup.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
+    popup.style.zIndex = "1000";
+    popup.style.textAlign = "center";
+
+    popup.innerHTML = `<strong>${title}</strong><p>${message}</p>`;
+
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+      document.body.removeChild(popup);
+    }, 5000);
+  }
+</script>
 
 
 </body>
+
+
 
 
 </html>
